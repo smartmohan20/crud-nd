@@ -26,6 +26,14 @@ Follow the instructions below to set up and run the project using Yarn:
    - All essential configuration details are available in the `.env` file.
    - Update the `.env` file if any modifications are required.
 
+## Starting the Application
+
+Once you have installed the dependencies, you can start the application using the following command:
+
+```
+yarn start
+```
+
 These instructions should guide you through the initial setup and configuration of the project. If you encounter any issues or have questions, please feel free to contact [career.smartmohan@gmail.com](mailto:career.smartmohan@gmail.com). Additionally, refer to the documentation for more details or seek assistance from the development team.
 
 Thank you.
