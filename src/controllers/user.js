@@ -100,7 +100,7 @@ export const createUser = async (req, res) => {
 
             // Successful response
             objRes = {
-                statusCode: 200,
+                statusCode: 201,
                 message: 'User created successfully!',
                 data: objUser
             };
