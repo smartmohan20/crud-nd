@@ -39,6 +39,41 @@ const findUserByEmail = async (email) => {
     }
 };
 
+// Method to find user by id
+const findUserById = async (id) => {
+    try {
+        let objRes = ISErrorRes;
+        
+        // Find user by id
+        const objUser = await User.findOne({
+            where: {
+                id
+            }
+        });
+
+        if (objUser) {
+            // Successful response
+            objRes = {
+                statusCode: 200,
+                message: 'User found successfully!',
+                data: objUser
+            };
+        } else {
+            // Failure response
+            objRes = {
+                statusCode: 404,
+                message: 'User not found!',
+                data: {},
+                errors: []
+            };
+        }
+        
+        return objRes;
+    } catch (error) {
+        console.error('Exception occured in "findUserById"!', 'File: ', strCurrFileUrl, 'Error: ', error);
+    }
+};
+
 // Controller to historical data
 export const createUser = async (req, res) => {
     try {
@@ -98,6 +133,69 @@ export const getAllUser = async (req, res) => {
         await sendJsonResponse(res, objRes);
     } catch (error) {
         console.error('Exception occured in "getAll"!', 'File: ', strCurrFileUrl, 'Error: ', error);
+        return sendJsonResponse(res, {...ISErrorRes, errors: [error.message]});
+    }
+};
+
+// Controller to update user
+export const updateUser = async (req, res) => {
+    try {
+        let objRes = ISErrorRes;
+        const { id } = req.params;
+        const { name, email, password, dob } = req.body;
+
+        let updatedUser = null;
+        const findUserRes = await findUserById(id);
+        if (findUserRes?.statusCode === 200) {
+            // Update user
+            const isUpdated = await User.update({
+                name,
+                email: email,
+                password,
+                dob
+            }, {
+                where: {
+                    email
+                }
+            });
+            
+            if (isUpdated) {
+                const findUserRes2 = await findUserById(id);
+                if (findUserRes2?.statusCode === 200) {
+                    updatedUser = findUserRes2?.data; 
+                }
+            }
+
+            if (updatedUser) {
+                // Successful response
+                objRes = {
+                    statusCode: 200,
+                    message: 'User updated successfully!',
+                    data: updatedUser
+                };
+            } else {
+                // Failure response
+                objRes = {
+                    statusCode: 404,
+                    message: 'Failed to update user!',
+                    data: {},
+                    errors: []
+                };
+            }
+        } else {
+            // Failure response
+            objRes = {
+                statusCode: 404,
+                message: 'User not found!',
+                data: {},
+                errors: []
+            };
+        }
+        
+        // Send json response
+        await sendJsonResponse(res, objRes);
+    } catch (error) {
+        console.error('Exception occured in "update"!', 'File: ', strCurrFileUrl, 'Error: ', error);
         return sendJsonResponse(res, {...ISErrorRes, errors: [error.message]});
     }
 };
