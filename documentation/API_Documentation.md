@@ -88,3 +88,22 @@ Request Body:
 400 Bad Request: Validation error.
 404 Not Found: User not found.
 ```
+
+## Delete User
+
+**URL**: `/users/:id`
+
+**Method**: `DELETE`
+
+**Description**: Deletes a user by their ID.
+
+URL Parameters:
+```
+id: The ID of the user to delete.
+```
+
+Responses:
+```
+200 OK: User deleted successfully.
+404 Not Found: User not found.
+```
