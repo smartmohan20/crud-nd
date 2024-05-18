@@ -107,3 +107,12 @@ Responses:
 200 OK: User deleted successfully.
 404 Not Found: User not found.
 ```
+
+## Error Handling
+All endpoints return appropriate HTTP status codes to indicate the success or failure of the request. Common status codes include:
+```
+200 OK: The request was successful.
+201 Created: A new resource was successfully created.
+400 Bad Request: There was an error with the request (e.g., validation errors).
+404 Not Found: The requested resource was not found.
+```
