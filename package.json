@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "crud-nd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/smartmohan20/crud-nd.git",
+  "author": "smartmohan20 <dev.smartmohan@gmail.com~>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
