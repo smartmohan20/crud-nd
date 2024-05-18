@@ -121,25 +121,25 @@ All endpoints return appropriate HTTP status codes to indicate the success or fa
 
 ### Create User
 ```
-curl -X POST http://localhost:3000/users -H "Content-Type: application/json" -d '{"name": "Test1", "email": "test1@yopmail.com", "password": "123456", "dob": 1716053192000}'
+curl -X POST http://localhost:3001/users -H "Content-Type: application/json" -d '{"name": "Test1", "email": "test1@yopmail.com", "password": "123456", "dob": 1716053192000}'
 ```
 
 ### Get All Users
 ```
-curl -X GET http://localhost:3000/users
+curl -X GET http://localhost:3001/users
 ```
 
 ### Get User
 ```
-curl -X GET http://localhost:3000/users/1
+curl -X GET http://localhost:3001/users/1
 ```
 
 ### Update User
 ```
-curl -X PUT http://localhost:3000/users/1 -H "Content-Type: application/json" -d '{"name": "Test2", "email": "test2@yopmail.com", "password": "123456", "dob": 1716053192000}'
+curl -X PUT http://localhost:3001/users/1 -H "Content-Type: application/json" -d '{"name": "Test2", "email": "test2@yopmail.com", "password": "123456", "dob": 1716053192000}'
 ```
 
 ### Delete User
 ```
-curl -X DELETE http://localhost:3000/users/1
+curl -X DELETE http://localhost:3001/users/1
 ```
