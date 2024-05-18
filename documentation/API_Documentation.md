@@ -58,3 +58,33 @@ id: The ID of the user to retrieve.
 200 OK: User details.
 404 Not Found: User not found.
 ```
+
+## Update User
+
+**URL**: `/users/:id`
+
+**Method**: `PUT`
+
+**Description**: Updates a user's information.
+
+**URL Parameters**:
+```
+id: The ID of the user to update.
+Request Body:
+```
+
+```json
+{
+  "name": "string",
+  "email": "string",
+  "password": "string",
+  "dob": "number"
+}
+```
+
+**Responses**:
+```
+200 OK: User updated successfully.
+400 Bad Request: Validation error.
+404 Not Found: User not found.
+```
