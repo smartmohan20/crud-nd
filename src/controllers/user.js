@@ -199,3 +199,52 @@ export const updateUser = async (req, res) => {
         return sendJsonResponse(res, {...ISErrorRes, errors: [error.message]});
     }
 };
+
+// Controller to delete user
+export const deleteUser = async (req, res) => {
+    try {
+        let objRes = ISErrorRes;
+        const { id } = req.params;
+        
+        const findUserRes = await findUserById(id);
+        if (findUserRes?.statusCode === 200) {
+            // Delete user
+            const isDeleted = await User.destroy({
+                where: {
+                    id: id
+                }
+            });
+            
+            if (isDeleted) {
+                // Successful response
+                objRes = {
+                    statusCode: 200,
+                    message: 'User deleted successfully!',
+                    data: {}
+                };
+            } else {
+                // Failure response
+                objRes = {
+                    statusCode: 404,
+                    message: 'Failed to delete user!',
+                    data: {},
+                    errors: []
+                };
+            }
+        } else {
+            // Failure response
+            objRes = {
+                statusCode: 404,
+                message: 'User not found!',
+                data: {},
+                errors: []
+            };
+        }
+
+        // Send json response
+        await sendJsonResponse(res, objRes);
+    } catch (error) {
+        console.error('Exception occured in "delete"!', 'File: ', strCurrFileUrl, 'Error: ', error);
+        return sendJsonResponse(res, {...ISErrorRes, errors: [error.message]});
+    }
+};
