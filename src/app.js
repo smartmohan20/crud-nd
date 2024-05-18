@@ -44,8 +44,10 @@ app.use(bodyParser.json());
 
 // Import routes
 const rootRoutes = (await import('./routes/rootRoutes.js')).default;
+const userRoutes = (await import('./routes/user/userRoutes.js')).default;
 
 // Use the routes
 app.use('/', rootRoutes);
+app.use('/users', userRoutes);
 
 export default app;
