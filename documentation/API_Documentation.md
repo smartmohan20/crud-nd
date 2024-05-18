@@ -29,13 +29,32 @@ This is a simple CRUD application built with Node.js for managing users. The API
 
 ## Get All Users
 
-**URL**: /users
+**URL**: `/users`
 
-**Method**: GET
+**Method**: `GET`
 
 **Description**: Retrieves a list of all users.
 
 **Responses**:
 ```
 200 OK: List of users.
+```
+
+## Get User
+
+**URL**: `/users/:id`
+
+**Method**: `GET`
+
+**Description**: Retrieves a user by their ID.
+
+**URL Parameters**:
+```
+id: The ID of the user to retrieve.
+```
+
+**Responses**:
+```
+200 OK: User details.
+404 Not Found: User not found.
 ```
