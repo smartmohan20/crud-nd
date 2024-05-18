@@ -116,3 +116,30 @@ All endpoints return appropriate HTTP status codes to indicate the success or fa
 400 Bad Request: There was an error with the request (e.g., validation errors).
 404 Not Found: The requested resource was not found.
 ```
+
+## Example Requests
+
+### Create User
+```
+curl -X POST http://localhost:3000/users -H "Content-Type: application/json" -d '{"name": "Test1", "email": "test1@yopmail.com", "password": "123456", "dob": 1716053192000}'
+```
+
+### Get All Users
+```
+curl -X GET http://localhost:3000/users
+```
+
+### Get User
+```
+curl -X GET http://localhost:3000/users/1
+```
+
+### Update User
+```
+curl -X PUT http://localhost:3000/users/1 -H "Content-Type: application/json" -d '{"name": "Test2", "email": "test2@yopmail.com", "password": "123456", "dob": 1716053192000}'
+```
+
+### Delete User
+```
+curl -X DELETE http://localhost:3000/users/1
+```
