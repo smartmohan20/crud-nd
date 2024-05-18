@@ -42,4 +42,10 @@ app.use(cors());
 // Use body-parser middleware
 app.use(bodyParser.json());
 
+// Import routes
+const rootRoutes = (await import('./routes/rootRoutes.js')).default;
+
+// Use the routes
+app.use('/', rootRoutes);
+
 export default app;
