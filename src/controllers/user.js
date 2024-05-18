@@ -137,6 +137,38 @@ export const getAllUser = async (req, res) => {
     }
 };
 
+// Controller to get a user
+export const getUser = async (req, res) => {
+    try {
+        let objRes = ISErrorRes;
+        const { id } = req.params;
+
+        const findUserRes = await findUserById(id);
+        if (findUserRes?.statusCode === 200) {
+            // Successful response
+            objRes = {
+                statusCode: 200,
+                message: 'User fetched successfully!',
+                data: findUserRes?.data
+            };
+        } else {
+            // Failure response
+            objRes = {
+                statusCode: 404,
+                message: 'User not found!',
+                data: {},
+                errors: []
+            };
+        }
+        
+        // Send json response
+        await sendJsonResponse(res, objRes);
+    } catch (error) {
+        console.error('Exception occured in "getUser"!', 'File: ', strCurrFileUrl, 'Error: ', error);
+        return sendJsonResponse(res, {...ISErrorRes, errors: [error.message]});
+    }
+};
+
 // Controller to update user
 export const updateUser = async (req, res) => {
     try {
